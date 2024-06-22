@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
     @Modifying
-    @Query("UPDATE Bill b SET b.billType = :email WHERE b.id = id")
+    @Query("UPDATE Bill b SET b.billType = :billType WHERE b.id = :id")
     public void updateMovieType( Long id, BillType billType);
 }

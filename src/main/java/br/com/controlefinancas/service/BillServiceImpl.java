@@ -18,7 +18,7 @@ public class BillServiceImpl implements BillService{
         this.billRepository = billRepository;
     }
 
-    public List<Bill> List() {
+    public List<Bill> list() {
         return billRepository.findAll();
     }
 

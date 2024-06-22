@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BillService {
 
-    public List<Bill> List();
+    public List<Bill> list();
 
     public Bill findById(Long id);
 
