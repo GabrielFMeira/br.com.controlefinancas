@@ -1,9 +1,6 @@
 package br.com.controlefinancas.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Bill {
@@ -15,6 +12,9 @@ public class Bill {
     private double valor;
 
     private String name;
+
+    @ManyToOne
+    private Owner owner;
 
     private BillType billType;
 
@@ -40,6 +40,14 @@ public class Bill {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public BillType getBillType() {
