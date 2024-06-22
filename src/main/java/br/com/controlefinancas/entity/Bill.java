@@ -14,7 +14,7 @@ public class Bill {
 
     private double valor;
 
-    private int name;
+    private String name;
 
     private BillType billType;
 
@@ -34,11 +34,11 @@ public class Bill {
         this.valor = valor;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

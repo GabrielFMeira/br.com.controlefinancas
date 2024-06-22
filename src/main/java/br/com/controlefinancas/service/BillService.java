@@ -11,7 +11,7 @@ public interface BillService {
 
     public Bill findById(Long id);
 
-    public void save (Bill bill);
+    public Bill save (Bill bill);
 
     public void changeType(Long id, BillType billType);
 }

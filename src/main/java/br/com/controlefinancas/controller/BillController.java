@@ -1,15 +1,14 @@
 package br.com.controlefinancas.controller;
 
 import br.com.controlefinancas.entity.Bill;
-import br.com.controlefinancas.repository.BillRepository;
 import br.com.controlefinancas.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("api/v1")
+@RestController
+@RequestMapping("api/v1")
 public class BillController {
 
     private final BillService billService;
@@ -31,7 +30,7 @@ public class BillController {
     }
 
     @PostMapping("/bills")
-    public void create(@RequestBody Bill bill){
-        billService.save(bill);
+    public Bill create(@RequestBody Bill bill){
+        return billService.save(bill);
     }
 }

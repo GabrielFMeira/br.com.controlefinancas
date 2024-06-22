@@ -27,8 +27,9 @@ public class BillServiceImpl implements BillService{
         return billRepository.findById(id).orElse(null);
     }
 
-    public void save(Bill bill){
+    public Bill save(Bill bill){
         billRepository.save(bill);
+        return bill;
     }
 
     public void changeType(Long id, BillType billType) {
