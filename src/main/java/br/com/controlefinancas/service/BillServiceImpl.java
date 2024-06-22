@@ -33,6 +33,6 @@ public class BillServiceImpl implements BillService{
     }
 
     public void changeType(Long id, BillType billType) {
-        billRepository.updateMovieType(id, billType);
+         billRepository.updateMovieType(id, billType);
     }
 }

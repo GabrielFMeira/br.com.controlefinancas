@@ -1,6 +1,7 @@
 package br.com.controlefinancas.controller;
 
 import br.com.controlefinancas.entity.Bill;
+import br.com.controlefinancas.entity.BillType;
 import br.com.controlefinancas.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +33,10 @@ public class BillController {
     @PostMapping("/bills")
     public Bill create(@RequestBody Bill bill){
         return billService.save(bill);
+    }
+
+    @PutMapping("/bills/change/{id}")
+    public void changeType(@PathVariable(value = "id") Long id, BillType billType){
+        billService.changeType(id, billType);
     }
 }
