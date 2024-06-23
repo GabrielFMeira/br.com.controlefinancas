@@ -40,4 +40,20 @@ public class BillServiceImpl implements BillService{
     public void changeType(Long id, BillType billType) {
          billRepository.updateMovieType(id, billType);
     }
+
+    // Deve retornar a porcentagem do salário usado
+    public int totalValuePercentage(Owner owner) {
+        List<Bill> contas = billRepository.findByOwner(owner);
+        double valorTotal = 0;
+        for (Bill conta : contas) {
+            valorTotal += conta.getValor();
+        }
+        int salaryUsedPercentage = this.regraDeTres(owner.getSalary(), valorTotal);
+        return salaryUsedPercentage;
+    }
+
+    public int regraDeTres(double salary, double totalValue) {
+        double usedPercentage = (100 * totalValue) / salary;
+        return (int) usedPercentage;
+    }
 }

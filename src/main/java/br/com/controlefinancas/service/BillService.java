@@ -17,4 +17,8 @@ public interface BillService {
     public Bill save (Bill bill);
 
     public void changeType(Long id, BillType billType);
+
+    public int totalValuePercentage(Owner owner);
+
+    public int regraDeTres(double salary, double totalValue);
 }
