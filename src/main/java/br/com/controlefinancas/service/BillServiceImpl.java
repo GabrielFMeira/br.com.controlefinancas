@@ -48,8 +48,7 @@ public class BillServiceImpl implements BillService{
         for (Bill conta : contas) {
             valorTotal += conta.getValor();
         }
-        int salaryUsedPercentage = this.regraDeTres(owner.getSalary(), valorTotal);
-        return salaryUsedPercentage;
+        return this.regraDeTres(owner.getSalary(), valorTotal);
     }
 
     public int regraDeTres(double salary, double totalValue) {

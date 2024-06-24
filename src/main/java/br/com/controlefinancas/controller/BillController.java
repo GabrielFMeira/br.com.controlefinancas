@@ -4,6 +4,7 @@ import br.com.controlefinancas.entity.Bill;
 import br.com.controlefinancas.entity.BillType;
 import br.com.controlefinancas.entity.Owner;
 import br.com.controlefinancas.service.BillService;
+import br.com.controlefinancas.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +15,12 @@ import java.util.List;
 public class BillController {
 
     private final BillService billService;
+    private final OwnerService ownerService;
 
     @Autowired
-    public BillController(BillService billService){
+    public BillController(BillService billService, OwnerService ownerService){
         this.billService = billService;
+        this.ownerService = ownerService;
     }
 
     @GetMapping("/bills")
@@ -44,5 +47,11 @@ public class BillController {
     @PutMapping("/bills/change/{id}")
     public void changeType(@PathVariable(value = "id") Long id, BillType billType){
         billService.changeType(id, billType);
+    }
+
+    @GetMapping("/bills/percentage/{ownerId}")
+    public int getUsePercentageOfSalary(@PathVariable("ownerId") Long ownerId){
+        Owner owner = ownerService.findById(ownerId);
+        return billService.totalValuePercentage(owner);
     }
 }
