@@ -2,6 +2,8 @@ package br.com.controlefinancas.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Bill {
 
@@ -17,6 +19,8 @@ public class Bill {
     private Owner owner;
 
     private BillType billType;
+
+    private LocalDateTime billExpiring;
 
     public Long getId() {
         return id;
@@ -56,5 +60,13 @@ public class Bill {
 
     public void setBillType(BillType billType) {
         this.billType = billType;
+    }
+
+    public LocalDateTime getBillExpiring() {
+        return billExpiring;
+    }
+
+    public void setBillExpiring(LocalDateTime billExpiring) {
+        this.billExpiring = billExpiring;
     }
 }
