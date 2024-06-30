@@ -7,6 +7,7 @@ import br.com.controlefinancas.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -38,7 +39,7 @@ public class BillServiceImpl implements BillService{
     }
 
     public void changeType(Long id, BillType billType) {
-         billRepository.updateMovieType(id, billType);
+         billRepository.updateBillType(id, billType);
     }
 
     // Deve retornar a porcentagem do salário usado
@@ -54,5 +55,10 @@ public class BillServiceImpl implements BillService{
     public int regraDeTres(double salary, double totalValue) {
         double usedPercentage = (100 * totalValue) / salary;
         return (int) usedPercentage;
+    }
+
+    public void updateBillExpiring(){
+        LocalDateTime currentDay = LocalDateTime.now();
+        billRepository.updateBillExpiring(BillType.valueOf("EXPIRED"), currentDay);
     }
 }
